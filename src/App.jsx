@@ -172,10 +172,6 @@ const SerendibCard = ({ data }) => (
     {/* Top Green Section */}
     <div style={styles.serendibHeader}>
       <div style={styles.serendibTopShape}></div>
-      <div style={styles.serendibLogoArea}>
-        <span style={styles.serendibMainText}>Serendib</span>
-        <span style={styles.serendibSubText}>GREEN PLANTATION</span>
-      </div>
     </div>
 
     {/* Photo Area */}
@@ -401,32 +397,10 @@ const styles = {
     transform: "rotate(-15deg)",
     borderRadius: "50% 50% 0 0",
   },
-  serendibLogoArea: {
-    position: "relative",
-    zIndex: 2,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    marginTop: "30px",
-  },
-  serendibMainText: {
-    color: "white",
-    fontSize: "32px",
-    fontWeight: "800",
-    letterSpacing: "1px",
-    lineHeight: 1,
-  },
-  serendibSubText: {
-    color: "white",
-    fontSize: "10px",
-    fontWeight: "700",
-    letterSpacing: "3px",
-    marginTop: "5px",
-  },
   serendibPhotoContainer: {
     display: "flex",
     justifyContent: "center",
-    marginTop: "-70px",
+    marginTop: "-90px",
     position: "relative",
     zIndex: 3,
   },
@@ -443,14 +417,12 @@ const styles = {
     height: "100%",
     borderRadius: "50%",
     objectFit: "cover",
-    border: "5px solid #4caf50",
   },
   serendibPhotoPlaceholder: {
     width: "100%",
     height: "100%",
     borderRadius: "50%",
     background: "#f1f5f9",
-    border: "5px solid #4caf50",
   },
   serendibBody: {
     flex: 1,
