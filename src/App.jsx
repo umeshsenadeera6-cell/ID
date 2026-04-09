@@ -167,11 +167,24 @@ export default function App() {
 
 // --- SUB-COMPONENTS ---
 
+const SerendibLogo = () => (
+  <div style={styles.serendibLogoContainer}>
+    <svg width="80" height="50" viewBox="0 0 80 50" style={styles.serendibLogoIcon}>
+      <path d="M40 45C40 45 15 35 15 15C15 -5 40 5 40 45Z" fill="white" transform="rotate(-15 40 45)" opacity="0.9" />
+      <path d="M40 45C40 45 65 35 65 15C65 -5 40 5 40 45Z" fill="white" transform="rotate(15 40 45)" opacity="1" />
+    </svg>
+    <div style={styles.serendibLogoText}>Serendib</div>
+    <div style={styles.serendibLogoSubtext}>GROUP OF COMPANIES</div>
+  </div>
+);
+
 const SerendibCard = ({ data }) => (
   <div style={styles.serendibContainer}>
     {/* Top Green Section */}
     <div style={styles.serendibHeader}>
-      <div style={styles.serendibTopShape}></div>
+      <div style={styles.serendibTopAccent}></div>
+      <SerendibLogo />
+      <div style={styles.serendibWave}></div>
     </div>
 
     {/* Photo Area */}
@@ -199,7 +212,7 @@ const SerendibCard = ({ data }) => (
       <p style={styles.serendibWebsite}>www.serendibgroups.com</p>
     </div>
 
-    {/* Bottom Green Section */}
+    {/* Bottom Section */}
     <div style={styles.serendibFooter}>
       <div style={styles.serendibBottomShape}></div>
     </div>
@@ -383,34 +396,80 @@ const styles = {
   },
   serendibHeader: {
     position: "relative",
-    height: "180px",
-    background: "#1d7c3d", // Darker green
+    height: "220px",
+    background: "linear-gradient(135deg, #1d7c3d 0%, #4caf50 100%)",
     overflow: "hidden",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingBottom: "40px",
   },
-  serendibTopShape: {
+  serendibTopAccent: {
     position: "absolute",
-    bottom: "-60px",
-    right: "-20px",
-    width: "120%",
-    height: "120px",
-    background: "#4caf50", // Lighter green
-    transform: "rotate(-15deg)",
-    borderRadius: "50% 50% 0 0",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    background: "linear-gradient(135deg, rgba(13, 90, 43, 0.4) 0%, transparent 50%)",
+    clipPath: "polygon(0 0, 60% 0, 0 100%)",
+    zIndex: 1,
+  },
+  serendibWave: {
+    position: "absolute",
+    bottom: "-2px",
+    right: "-2px",
+    width: "70%",
+    height: "100px",
+    background: "white",
+    borderRadius: "100% 0 0 0",
+    zIndex: 2,
+  },
+  serendibLogoContainer: {
+    position: "relative",
+    zIndex: 3,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginTop: "-20px",
+  },
+  serendibLogoIcon: {
+    marginBottom: "-15px",
+  },
+  serendibLogoText: {
+    color: "white",
+    fontSize: "42px",
+    fontWeight: "800",
+    letterSpacing: "-1px",
+    margin: 0,
+  },
+  serendibLogoSubtext: {
+    color: "white",
+    fontSize: "12px",
+    fontWeight: "700",
+    letterSpacing: "4px",
+    marginTop: "-5px",
+    opacity: 0.9,
   },
   serendibPhotoContainer: {
     display: "flex",
     justifyContent: "center",
-    marginTop: "-90px",
+    marginTop: "-110px",
     position: "relative",
-    zIndex: 3,
+    zIndex: 10,
   },
   serendibPhotoCircle: {
-    width: "180px",
-    height: "180px",
+    width: "220px",
+    height: "220px",
     borderRadius: "50%",
-    background: "white",
-    padding: "8px",
-    boxShadow: "0 5px 15px rgba(0,0,0,0.1)",
+    background: "#e2e8f0",
+    padding: "10px",
+    boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+    border: "12px solid #2e7d32",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    overflow: "hidden",
   },
   serendibPhotoImage: {
     width: "100%",
