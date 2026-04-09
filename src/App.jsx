@@ -173,12 +173,22 @@ const SerendibCard = ({ data }) => (
     <div style={styles.serendibHeader}>
       <div style={styles.serendibTopShape}></div>
       <div style={styles.serendibLogoArea}>
-        <svg width="35" height="35" viewBox="0 0 100 100" style={styles.serendibLogoLeaves}>
-          <path d="M50 20 C60 10 90 20 90 50 C90 80 60 90 50 80 C40 90 10 80 10 50 C10 20 40 10 50 20" fill="white" />
-          <path d="M50 20 L50 80" stroke="#1d7c3d" strokeWidth="2" />
+        <svg width="50" height="40" viewBox="0 0 120 100" style={styles.serendibLogoLeaves}>
+          {/* Smaller Left Leaf */}
+          <path 
+            d="M45 45 C35 30 15 35 15 60 C15 85 35 90 45 80 C55 90 75 85 75 60 C75 35 55 30 45 45" 
+            fill="white" 
+            transform="rotate(-20, 45, 60) scale(0.8)"
+          />
+          {/* Larger Right Leaf */}
+          <path 
+            d="M75 35 C65 15 35 20 35 50 C35 80 65 90 75 80 C85 90 115 80 115 50 C115 20 85 15 75 35" 
+            fill="white" 
+            transform="rotate(15, 75, 50)"
+          />
         </svg>
         <span style={styles.serendibMainText}>Serendib</span>
-        <span style={styles.serendibSubText}>GROUP OF COMPANIES</span>
+        <span style={styles.serendibSubText}>GREEN PLANTATION</span>
       </div>
     </div>
 
@@ -391,7 +401,7 @@ const styles = {
   },
   serendibHeader: {
     position: "relative",
-    height: "200px",
+    height: "180px",
     background: "#1d7c3d", // Darker green
     overflow: "hidden",
   },
@@ -411,14 +421,14 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    marginTop: "20px",
+    marginTop: "30px",
   },
   serendibLogoLeaves: {
     marginBottom: "5px",
   },
   serendibMainText: {
     color: "white",
-    fontSize: "28px",
+    fontSize: "32px",
     fontWeight: "800",
     letterSpacing: "1px",
     lineHeight: 1,
@@ -433,7 +443,7 @@ const styles = {
   serendibPhotoContainer: {
     display: "flex",
     justifyContent: "center",
-    marginTop: "-80px",
+    marginTop: "-70px",
     position: "relative",
     zIndex: 3,
   },
