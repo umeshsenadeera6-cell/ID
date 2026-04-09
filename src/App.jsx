@@ -173,20 +173,6 @@ const SerendibCard = ({ data }) => (
     <div style={styles.serendibHeader}>
       <div style={styles.serendibTopShape}></div>
       <div style={styles.serendibLogoArea}>
-        <svg width="50" height="40" viewBox="0 0 120 100" style={styles.serendibLogoLeaves}>
-          {/* Smaller Left Leaf */}
-          <path 
-            d="M45 45 C35 30 15 35 15 60 C15 85 35 90 45 80 C55 90 75 85 75 60 C75 35 55 30 45 45" 
-            fill="white" 
-            transform="rotate(-20, 45, 60) scale(0.8)"
-          />
-          {/* Larger Right Leaf */}
-          <path 
-            d="M75 35 C65 15 35 20 35 50 C35 80 65 90 75 80 C85 90 115 80 115 50 C115 20 85 15 75 35" 
-            fill="white" 
-            transform="rotate(15, 75, 50)"
-          />
-        </svg>
         <span style={styles.serendibMainText}>Serendib</span>
         <span style={styles.serendibSubText}>GREEN PLANTATION</span>
       </div>
@@ -422,9 +408,6 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
     marginTop: "30px",
-  },
-  serendibLogoLeaves: {
-    marginBottom: "5px",
   },
   serendibMainText: {
     color: "white",
