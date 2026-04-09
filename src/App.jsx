@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import html2canvas from "html2canvas";
 
 export default function App() {
-  const [template, setTemplate] = useState("serendib");
   const [data, setData] = useState({
     name: "UMESH ERANGA",
     position: "IT EXECUTIVE",
@@ -10,8 +9,6 @@ export default function App() {
     office: "Head Office",
     salesCode: "XXXXX",
     nicNo: "199509501869",
-    empId: "EMP-001", // For classic template
-    department: "IT", // For classic template
   });
 
   const handleChange = (e) => {
@@ -40,18 +37,7 @@ export default function App() {
       <header style={styles.header}>
         <h1 style={styles.title}>ID Card Generator PRO</h1>
         <div style={styles.templateSwitcher}>
-          <button 
-            onClick={() => setTemplate("serendib")}
-            style={{...styles.switchBtn, ...(template === "serendib" ? styles.activeSwitch : {})}}
-          >
-            Serendib Template
-          </button>
-          <button 
-            onClick={() => setTemplate("classic")}
-            style={{...styles.switchBtn, ...(template === "classic" ? styles.activeSwitch : {})}}
-          >
-            Classic Template
-          </button>
+          <span style={styles.activeTemplateText}>Serendib Professional Template</span>
         </div>
       </header>
 
@@ -82,61 +68,36 @@ export default function App() {
                 />
               </div>
 
-              {template === "serendib" ? (
-                <>
-                  <div style={styles.inputGroup}>
-                    <label style={styles.label}>Office / Branch</label>
-                    <input
-                      name="office"
-                      value={data.office}
-                      placeholder="e.g. Head Office"
-                      onChange={handleChange}
-                      style={styles.input}
-                    />
-                  </div>
-                  <div style={styles.inputGroup}>
-                    <label style={styles.label}>Sales Code</label>
-                    <input
-                      name="salesCode"
-                      value={data.salesCode}
-                      placeholder="e.g. S-12345"
-                      onChange={handleChange}
-                      style={styles.input}
-                    />
-                  </div>
-                  <div style={styles.inputGroup}>
-                    <label style={styles.label}>NIC Number</label>
-                    <input
-                      name="nicNo"
-                      value={data.nicNo}
-                      placeholder="e.g. 199509501869"
-                      onChange={handleChange}
-                      style={styles.input}
-                    />
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div style={styles.inputGroup}>
-                    <label style={styles.label}>Employee ID</label>
-                    <input
-                      name="empId"
-                      value={data.empId}
-                      onChange={handleChange}
-                      style={styles.input}
-                    />
-                  </div>
-                  <div style={styles.inputGroup}>
-                    <label style={styles.label}>Department</label>
-                    <input
-                      name="department"
-                      value={data.department}
-                      onChange={handleChange}
-                      style={styles.input}
-                    />
-                  </div>
-                </>
-              )}
+              <div style={styles.inputGroup}>
+                <label style={styles.label}>Office / Branch</label>
+                <input
+                  name="office"
+                  value={data.office}
+                  placeholder="e.g. Head Office"
+                  onChange={handleChange}
+                  style={styles.input}
+                />
+              </div>
+              <div style={styles.inputGroup}>
+                <label style={styles.label}>Sales Code</label>
+                <input
+                  name="salesCode"
+                  value={data.salesCode}
+                  placeholder="e.g. S-12345"
+                  onChange={handleChange}
+                  style={styles.input}
+                />
+              </div>
+              <div style={styles.inputGroup}>
+                <label style={styles.label}>NIC Number</label>
+                <input
+                  name="nicNo"
+                  value={data.nicNo}
+                  placeholder="e.g. 199509501869"
+                  onChange={handleChange}
+                  style={styles.input}
+                />
+              </div>
               
               <div style={{...styles.inputGroup, gridColumn: "1 / -1"}}>
                 <label style={styles.label}>Profile Photo</label>
@@ -152,12 +113,8 @@ export default function App() {
 
         {/* PREVIEW SECTION */}
         <section style={styles.previewSection}>
-          <div id="id-card-capture" style={template === "serendib" ? styles.serendibCard : styles.classicCard}>
-            {template === "serendib" ? (
-              <SerendibCard data={data} />
-            ) : (
-              <ClassicCard data={data} />
-            )}
+          <div id="id-card-capture" style={styles.serendibCard}>
+            <SerendibCard data={data} />
           </div>
         </section>
       </main>
@@ -169,9 +126,9 @@ export default function App() {
 
 const SerendibLogo = () => (
   <div style={styles.serendibLogoContainer}>
-    <svg width="80" height="50" viewBox="0 0 80 50" style={styles.serendibLogoIcon}>
-      <path d="M40 45C40 45 15 35 15 15C15 -5 40 5 40 45Z" fill="white" transform="rotate(-15 40 45)" opacity="0.9" />
-      <path d="M40 45C40 45 65 35 65 15C65 -5 40 5 40 45Z" fill="white" transform="rotate(15 40 45)" opacity="1" />
+    <svg width="100" height="60" viewBox="0 0 100 60" style={styles.serendibLogoIcon}>
+      <path d="M50 50C50 50 20 40 20 15C20 -10 50 0 50 50Z" fill="#ffffff" transform="rotate(-15 50 50)" />
+      <path d="M50 50C50 50 80 40 80 15C80 -10 50 0 50 50Z" fill="#ffffff" transform="rotate(15 50 50)" />
     </svg>
     <div style={styles.serendibLogoText}>Serendib</div>
     <div style={styles.serendibLogoSubtext}>GROUP OF COMPANIES</div>
@@ -219,28 +176,6 @@ const SerendibCard = ({ data }) => (
   </div>
 );
 
-const ClassicCard = ({ data }) => (
-  <div style={styles.classicContainer}>
-    <div style={styles.classicAccent} />
-    <div style={styles.classicContent}>
-      <div style={styles.classicPhotoBox}>
-        {data.photo ? (
-          <img src={data.photo} alt="profile" style={styles.classicPhoto} />
-        ) : (
-          <div style={styles.classicPhotoPlaceholder} />
-        )}
-      </div>
-      <div style={styles.classicText}>
-        <h2 style={styles.classicName}>{data.name || "Employee Name"}</h2>
-        <p style={styles.classicPos}>{data.position || "Position"}</p>
-        <div style={styles.classicFooter}>
-          <p><strong>ID:</strong> {data.empId}</p>
-          <p><strong>Dept:</strong> {data.department}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-);
 
 // --- STYLES ---
 
@@ -275,21 +210,6 @@ const styles = {
     background: "#f0f2f5",
     padding: "4px",
     borderRadius: "8px",
-  },
-  switchBtn: {
-    padding: "8px 16px",
-    border: "none",
-    background: "transparent",
-    borderRadius: "6px",
-    cursor: "pointer",
-    fontWeight: "600",
-    color: "#64748b",
-    transition: "all 0.2s",
-  },
-  activeSwitch: {
-    background: "#ffffff",
-    color: "#1d7c3d",
-    boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
   },
   main: {
     maxWidth: "1100px",
@@ -377,14 +297,6 @@ const styles = {
     overflow: "hidden",
     boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
   },
-  classicCard: {
-    width: "400px",
-    height: "250px",
-    background: "#ffffff",
-    borderRadius: "12px",
-    overflow: "hidden",
-    boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
-  },
   // Serendib Template Styles
   serendibContainer: {
     position: "relative",
@@ -396,14 +308,15 @@ const styles = {
   },
   serendibHeader: {
     position: "relative",
-    height: "220px",
-    background: "linear-gradient(135deg, #1d7c3d 0%, #4caf50 100%)",
+    height: "260px",
+    background: "#1d7c3d",
+    backgroundImage: "linear-gradient(135deg, #093d1d 0%, #1d7c3d 50%, #4caf50 100%)",
     overflow: "hidden",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
-    paddingBottom: "40px",
+    justifyContent: "flex-start",
+    paddingTop: "40px",
   },
   serendibTopAccent: {
     position: "absolute",
@@ -411,61 +324,65 @@ const styles = {
     left: 0,
     width: "100%",
     height: "100%",
-    background: "linear-gradient(135deg, rgba(13, 90, 43, 0.4) 0%, transparent 50%)",
-    clipPath: "polygon(0 0, 60% 0, 0 100%)",
+    background: "linear-gradient(135deg, rgba(9, 61, 29, 0.4) 0%, transparent 60%)",
+    clipPath: "polygon(0 0, 70% 0, 0 100%)",
     zIndex: 1,
   },
   serendibWave: {
     position: "absolute",
-    bottom: "-2px",
-    right: "-2px",
-    width: "70%",
-    height: "100px",
+    bottom: 0,
+    right: 0,
+    width: "100%",
+    height: "140px",
     background: "white",
-    borderRadius: "100% 0 0 0",
+    clipPath: "path('M 1000 140 L 1000 0 C 800 100 400 0 0 100 L 0 140 Z')", // SVG path for a wave
     zIndex: 2,
+    transform: "scaleX(1) scaleY(1)",
+    transformOrigin: "bottom right",
   },
   serendibLogoContainer: {
     position: "relative",
-    zIndex: 3,
+    zIndex: 10,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    marginTop: "-20px",
+    justifyContent: "center",
   },
   serendibLogoIcon: {
-    marginBottom: "-15px",
+    marginBottom: "0px",
   },
   serendibLogoText: {
-    color: "white",
-    fontSize: "42px",
-    fontWeight: "800",
-    letterSpacing: "-1px",
+    color: "#ffffff",
+    fontSize: "36px",
+    fontWeight: "900",
+    letterSpacing: "1px",
     margin: 0,
+    lineHeight: 1.1,
+    textShadow: "0 2px 10px rgba(0,0,0,0.2)",
   },
   serendibLogoSubtext: {
-    color: "white",
-    fontSize: "12px",
+    color: "#ffffff",
+    fontSize: "10px",
     fontWeight: "700",
     letterSpacing: "4px",
-    marginTop: "-5px",
+    marginTop: "2px",
     opacity: 0.9,
   },
   serendibPhotoContainer: {
     display: "flex",
     justifyContent: "center",
-    marginTop: "-110px",
+    marginTop: "-50px",
     position: "relative",
     zIndex: 10,
   },
   serendibPhotoCircle: {
-    width: "220px",
-    height: "220px",
+    width: "160px",
+    height: "160px",
     borderRadius: "50%",
-    background: "#e2e8f0",
-    padding: "10px",
-    boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
-    border: "12px solid #2e7d32",
+    background: "white",
+    padding: "6px",
+    boxShadow: "0 8px 15px rgba(0,0,0,0.12)",
+    border: "8px solid #2e7d32",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -492,17 +409,19 @@ const styles = {
   },
   serendibName: {
     fontSize: "26px",
-    fontWeight: "800",
-    color: "black",
-    margin: "10px 0 0 0",
+    fontWeight: "900",
+    color: "#000000",
+    margin: "12px 0 0 0",
     textTransform: "uppercase",
+    letterSpacing: "0.5px",
   },
   serendibPositionText: {
     fontSize: "16px",
-    fontWeight: "700",
+    fontWeight: "800",
     color: "#2e7d32",
-    margin: "5px 0 20px 0",
+    margin: "6px 0 24px 0",
     textTransform: "uppercase",
+    letterSpacing: "1px",
   },
   serendibDetailsArea: {
     textAlign: "center",
@@ -528,67 +447,19 @@ const styles = {
   },
   serendibBottomShape: {
     position: "absolute",
-    bottom: "-40px",
-    left: "-10%",
-    width: "120%",
-    height: "100px",
+    bottom: 0,
+    left: 0,
+    width: "220px",
+    height: "160px",
     background: "#4caf50",
-    borderRadius: "50% 50% 0 0",
+    borderRadius: "0 100% 0 0",
+    transform: "translate(-50px, 50px) rotate(-15deg)",
+    zIndex: 1,
   },
-  // Classic Template
-  classicContainer: {
-    height: "100%",
-    position: "relative",
-    display: "flex",
-    paddingLeft: "15px",
-  },
-  classicAccent: {
-    width: "8px",
-    background: "#1d7c3d",
-    height: "100%",
-  },
-  classicContent: {
-    flex: 1,
-    display: "flex",
-    alignItems: "center",
-    padding: "20px",
-    gap: "20px",
-  },
-  classicPhotoBox: {
-    width: "120px",
-    height: "150px",
-    background: "#f8fafc",
-    borderRadius: "8px",
-    overflow: "hidden",
-    border: "1px solid #e2e8f0",
-  },
-  classicPhoto: {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-  },
-  classicPhotoPlaceholder: {
-    width: "100%",
-    height: "100%",
-    background: "#e2e8f0",
-  },
-  classicText: {
-    flex: 1,
-  },
-  classicName: {
-    fontSize: "22px",
-    fontWeight: "800",
-    margin: "0 0 5px 0",
-  },
-  classicPos: {
-    fontSize: "16px",
-    color: "#64748b",
-    margin: "0 0 20px 0",
-  },
-  classicFooter: {
-    borderTop: "1px solid #e2e8f0",
-    paddingTop: "15px",
+  activeTemplateText: {
     fontSize: "14px",
-    color: "#475569",
+    fontWeight: "700",
+    color: "#1d7c3d",
+    padding: "8px 16px",
   },
 };
