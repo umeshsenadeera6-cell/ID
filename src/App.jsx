@@ -173,7 +173,7 @@ const SerendibCard = ({ data }) => (
     <div style={styles.serendibHeader}>
       <div style={styles.serendibTopShape}></div>
       <div style={styles.serendibLogoArea}>
-        <svg width="40" height="40" viewBox="0 0 100 100" style={styles.serendibLogoLeaves}>
+        <svg width="35" height="35" viewBox="0 0 100 100" style={styles.serendibLogoLeaves}>
           <path d="M50 20 C60 10 90 20 90 50 C90 80 60 90 50 80 C40 90 10 80 10 50 C10 20 40 10 50 20" fill="white" />
           <path d="M50 20 L50 80" stroke="#1d7c3d" strokeWidth="2" />
         </svg>
@@ -391,7 +391,7 @@ const styles = {
   },
   serendibHeader: {
     position: "relative",
-    height: "180px",
+    height: "200px",
     background: "#1d7c3d", // Darker green
     overflow: "hidden",
   },
@@ -411,14 +411,14 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    marginTop: "30px",
+    marginTop: "20px",
   },
   serendibLogoLeaves: {
     marginBottom: "5px",
   },
   serendibMainText: {
     color: "white",
-    fontSize: "32px",
+    fontSize: "28px",
     fontWeight: "800",
     letterSpacing: "1px",
     lineHeight: 1,
@@ -433,7 +433,7 @@ const styles = {
   serendibPhotoContainer: {
     display: "flex",
     justifyContent: "center",
-    marginTop: "-70px",
+    marginTop: "-80px",
     position: "relative",
     zIndex: 3,
   },
